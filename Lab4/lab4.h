@@ -47,7 +47,7 @@ int CalculateCumulative(Cat_Grade * category);
 float * CalculateClassAverages(Node ** listHead);
 
 
-/*---------- Functions that realte to nodes ------------- */
+/*---------- Functions that relate to nodes ------------- */
 /*Creates a new student node with the given data and returns a pointer to it */
 Node * CreateNode(Data studentData);
 
@@ -57,7 +57,7 @@ int InsertNode(Node* student, Node** listHead);
 
 
 /* Deletes the given node */
-void deleteNode(Node **listHead, Node *node);
+void DeleteNode(Node **listHead, Node *node);
 
 
 /*------------ Functions that print data ---------- */
@@ -73,8 +73,13 @@ void PrintHeader(char *categoryNames, FILE *file);
 void PrintStudent(Node* student, FILE *file);
 
 
+/*Prints a simpler version of student for option 4 */
+void PrintStudentSimple(Node* student, char* categoryNames, FILE *file);
+
+
 /*Prints a score for a given category, if its -1 prints n/a */
 void PrintScore(float score, FILE *file);
+
 
 /*Prints all lines of student data */
 void PrintAllLines(Node **listHead, char *categoryNames, FILE *file);
@@ -84,8 +89,36 @@ void PrintAllLines(Node **listHead, char *categoryNames, FILE *file);
 void PrintLine(Node **listHead, char *categoryNames, FILE *file);
 
 
+/*User option 2: prints a single line about a student specified by the user with the last name */
+void PrintWithLast(Node **listHead, char *categoryNames, FILE *file);
+
+
 /*User option 3: prints all lines of the linked list */
 void PrintAll(Node **listHead, char *categoryNames, FILE *file);
+
+
+/*User option 4: recalculates a students grades and prints them */
+void RecalculateGradesForStudent(Node **listHead, char * categoryNames, FILE* file);
+
+
+/*User option 5: recalculates all students grades and prints them */
+void RecalculateAllGrades(Node **listHead, char *categoryNames, FILE *file);
+
+
+/*User option 6: asks user for student id and what grades they want to change for that student */
+void ChangeStudentGrade(Node **listHead, char *categoryNames, FILE *file);
+
+
+/* User option 7: calculates final grades for a student */
+void CalculateFinalGrades(Node **listHead, char *categoryNames, FILE *file);
+
+
+/*User options 8: adds new student using info provided by user */
+void AddNewStudent(Node **listHead, char* categoryNames, FILE *file);
+
+
+/*User option 9: deletes a student using student id */
+void DeleteStudent(Node **listHead);
 
 
 /*User Options 10: Prints all data to output file */
@@ -98,7 +131,11 @@ int IdIsDuplicate(Node **listHead, int newStudentID);
 
 
 /*Gets the node for the given student id if it exists */
-Node * Get_NodeforId(Node **listHead, int studentId);
+Node * GetNodeForId(Node **listHead, int studentId);
+
+
+/*Gets the node for the given student last name if it exists */
+Node * GetNodeForLast(Node **listHead, char studentLast[40]);
 
 
 /*Frees all memory used by program */

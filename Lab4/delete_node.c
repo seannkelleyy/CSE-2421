@@ -4,18 +4,19 @@ THIS FILE MYSELF WITH NO ASSISTANCE FROM ANY PERSON (OTHER THAN THE
 INSTRUCTOR OR GRADERS OF THIS COURSE) AND I HAVE STRICTLY ADHERED TO THE
 TENURES OF THE OHIO STATE UNIVERSITY’S ACADEMIC INTEGRITY POLICY.
 */
-void deleteNode(Node **listHead, Node *node){
+void DeleteNode(Node **listHead, Node *node){
 	Node *prevNode = *listHead;
 	Node *traverseNode =prevNode->next;
 	if(*listHead == node){
 		*listHead = node->next;
 	} else{
 		while(traverseNode != NULL){
-			if (traverseNode->Student.student_Id == node->Student.student_Id){
+			if (traverseNode->Student.student_ID == node->Student.student_ID){
 				prevNode->next = traverseNode->next;
 			}
 			prevNode = prevNode->next;
 			traverseNode = traverseNode->next;
 		}
 	}
+	free(node);
 }

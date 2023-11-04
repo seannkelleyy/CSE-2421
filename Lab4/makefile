@@ -21,7 +21,8 @@ lab4.o: lab4main.c lab4.h
 
 #creates zip file to turn into carmen
 lab4.zip: makefile lab4main.c lab4.h
-	zip lab4 calculate_cumulative.c delete_node.c get_node_for_Id.c insert_node.c lab4.h print_all_lines.c print_header.c print_on_exit.c print_student.c calculate_grades.c create_node.c free_memory.c id_is_duplicate.c lab4main.c makefile print_data.c print_line.c print_score.c read_data.c calculate_class_averages.c print_all.c
+	zip lab4 add_new_student.c get_node_for_last.c print_all_lines.c print_student.c calculate_class_averages.c create_node.c id_is_duplicate.c print_data.c print_student_simple.c calculate_cumulative.c delete_node.c insert_node.c print_header.c print_with_last.c calculate_final_grades.c delete_student.c makefile print_line.c read_data.c calculate_grades.c free_memory.c lab4.h print_on_exit.c recalculate_all_grades.c change_student_grade.c get_node_for_id.c lab4main.c print_all.c print_score.c recalculate_grades_for_student.c
+
 
 #runs lab4 with class_records file as input and new_records as output
 run:
@@ -31,5 +32,8 @@ run:
 leak: 
 	valgrind --leak-check=full -v lab4 class_records new_records
 
-
+#runs debugger
+debug: clean lab4
+	gdb ./lab4 class_records new_records
+	
 

@@ -6,17 +6,16 @@ TENURES OF THE OHIO STATE UNIVERSITY’S ACADEMIC INTEGRITY POLICY.
 */
 #include <stdio.h>
 
-void PrintAllLines(Node **listHead, char *categoryNames, FILE *file){
+void RecalculateAllGrades(Node **listHead, char *categoryNames, FILE *file){
 	Node *traverseNode = *listHead;
 	// checks if list is empty
 	if (*listHead == NULL) {
         fprintf(file, "The list is empty.\n");
         return;
     }
-	// prints header and every student
-	PrintHeader(categoryNames, file);
+	// prints every student
 	while (traverseNode != NULL){
-		PrintStudent(traverseNode, file);
+		PrintStudentSimple(traverseNode, categoryNames, file);
 		traverseNode = traverseNode->next;
 	}
 }

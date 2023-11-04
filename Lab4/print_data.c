@@ -6,18 +6,18 @@ TENURES OF THE OHIO STATE UNIVERSITY’S ACADEMIC INTEGRITY POLICY.
 */
 
 #include <stdio.h>
-#include "print_header.c"
-#include "print_student.c"
-#include "print_line.c"
-#include "print_all_lines.c"
-#include "print_on_exit.c"
-#include "print_all.c"
 
 void PrintData(Node **listHead, char *fileName){
 	// creates function pointer array and assigns functions
-	void (*fp[7])(Node **, char *, FILE *);
+	void (*fp[8])(Node **, char *, FILE *);
 	fp[0] = PrintLine;
+	fp[1] = PrintWithLast;
 	fp[2] = PrintAll;
+	fp[3] = RecalculateGradesForStudent;
+	fp[4] = RecalculateAllGrades;
+	fp[5] = ChangeStudentGrade;
+	fp[6] = CalculateFinalGrades;
+	fp[7] = AddNewStudent;
 	
 	// declares variables used later in function
 	int userChoice;
@@ -60,16 +60,13 @@ void PrintData(Node **listHead, char *fileName){
 		}
 		
 		// calls the function based on what the user chose, using an array of 
-		// function pointers if the entry was 7 or less and switch if more than 7
-		if ((unsigned)userChoice <= 7){
+		// function pointers or switch
+		if ((unsigned)userChoice <= 8){
 		    fp[userChoice - 1](listHead, categoryNames, stdout);
 		} else {
 		    switch (userChoice){
-		        case 8 :
-		            //options 8 function
-		            break;
 		        case 9 :
-		            //options 9 function
+		            DeleteStudent(listHead);
 		            break;
 		        case 10 :
 		            PrintOnExit(listHead, categoryNames, fileName);
@@ -78,7 +75,7 @@ void PrintData(Node **listHead, char *fileName){
 		            printf("Please enter a valid number.");
 		            break;
 		    }
-		}       
+		}        
 	} while(userChoice != 10);
 
 	// frees memory used

@@ -8,10 +8,6 @@ TENURES OF THE OHIO STATE UNIVERSITY’S ACADEMIC INTEGRITY POLICY.
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "calculate_grades.c"
-#include "create_node.c"
-#include "insert_node.c"
-#include "id_is_duplicate.c"
 
 Node** ReadData(char *fileName){
 	/*Initializing list head and file*/

@@ -6,7 +6,6 @@ TENURES OF THE OHIO STATE UNIVERSITY’S ACADEMIC INTEGRITY POLICY.
 */
 
 #include <stdio.h>
-#include "free_memory.c"
 
 void PrintOnExit(Node **listHead, char *categoryNames, char *fileName){
 	FILE *file = fopen(fileName, "w");

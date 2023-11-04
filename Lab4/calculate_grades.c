@@ -6,7 +6,6 @@ TENURES OF THE OHIO STATE UNIVERSITY’S ACADEMIC INTEGRITY POLICY.
 */
 		
 #include <stdlib.h>
-#include "calculate_cumulative.c"
 
 Data CalculateGrades(Data studentData){
 	// calcualtes cumulative grades for all 4 categories

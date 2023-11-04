@@ -7,7 +7,7 @@ TENURES OF THE OHIO STATE UNIVERSITY’S ACADEMIC INTEGRITY POLICY.
 
 #include <stdio.h>
 
-void PrintStudent(Node* student, FILE *file){
+void PrintStudentSimple(Node* student, char *categoryNames, FILE *file){
 	// checks if needed data is NULL
 	if (student == NULL) {
         fprintf(file, "Error: student is NULL\n");
@@ -21,26 +21,16 @@ void PrintStudent(Node* student, FILE *file){
 	// prints data using Print score function
 	Data studentData = student->Student;
 	studentData.student_name[strcspn(studentData.student_name,"\n")] = 0;
-	fprintf(file, "%-25s\t", studentData.student_name);
-	fprintf(file, "%d\t", studentData.student_ID);
-	PrintScore(studentData.Cat1.score1, file);
-	PrintScore(studentData.Cat1.score2, file);
-	PrintScore(studentData.Cat1.score3, file);
+	fprintf(file, "%-25s", studentData.student_name);
+	printf("%s Cumulative: ", categoryNames);
 	PrintScore(studentData.Cat1.Cumulative, file);
-	PrintScore(studentData.Cat2.score1, file);
-	PrintScore(studentData.Cat2.score2, file);
-	PrintScore(studentData.Cat2.score3, file);
+	printf("%s Cumulative: ", (char*)categoryNames+15);
 	PrintScore(studentData.Cat2.Cumulative, file);
-	PrintScore(studentData.Cat3.score1, file);
-	PrintScore(studentData.Cat3.score2, file);
-	PrintScore(studentData.Cat3.score3, file);
+	printf("%s Cumulative: ", (char*)categoryNames+30);
 	PrintScore(studentData.Cat3.Cumulative, file);
-	PrintScore(studentData.Cat4.score1, file); 
-	PrintScore(studentData.Cat4.score2, file);
-	PrintScore(studentData.Cat4.score3, file);
+	printf("%s Cumulative: ", (char*)categoryNames+45);
 	PrintScore(studentData.Cat4.Cumulative, file);
+	printf("Current Grade is: ");
 	PrintScore(studentData.Current_Grade, file);
-	fprintf(file, "\t");
-	PrintScore(studentData.Final_Grade, file);
 	fprintf(file, "\n");
 }

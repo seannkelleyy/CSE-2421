@@ -22,7 +22,7 @@ int CalculateCumulative(Cat_Grade * category){
 	if(numberOfValidScores != 0) {
 		category->Cumulative = category->Cumulative / numberOfValidScores;
 	} else {
-		category->Cumulative = 0;
+		category->Cumulative =-1;
 	}
 	
 	return 1;

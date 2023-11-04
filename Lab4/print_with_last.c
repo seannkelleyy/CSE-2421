@@ -4,26 +4,23 @@ THIS FILE MYSELF WITH NO ASSISTANCE FROM ANY PERSON (OTHER THAN THE
 INSTRUCTOR OR GRADERS OF THIS COURSE) AND I HAVE STRICTLY ADHERED TO THE
 TENURES OF THE OHIO STATE UNIVERSITY’S ACADEMIC INTEGRITY POLICY.
 */
-/* This is the program for option 1
-* print student scores for a specific student ID#
-*/
+
 #include <stdio.h>
 
-void PrintLine(Node **listHead, char *categoryNames, FILE *file){
+void PrintWithLast(Node **listHead, char *categoryNames, FILE *file){
 	Node *NodePtr;
-	int StudentID;
+	char studentLast[40];
 #ifdef DEBUG
 	fprintf(file, "Student Data. Head List is %x\n", *listHead);
 #endif
-	/* get studentID to use from user */
-	fprintf(file, "Enter the Student ID #: ");
-	scanf("%i", &StudentID);
-	fprintf(file, "Hunting for %d\n", StudentID);
+	/* get studentLast to use from user */
+	fprintf(file, "Enter the Student Last Name: ");
+	scanf("%s", &studentLast);
+	fprintf(file, "Hunting for %s\n", studentLast);
 	/* look for the correct student Node */
-	NodePtr = GetNodeForId(listHead, StudentID);
-	/* we found it or not */
-	if(NodePtr == NULL){ //Student.student_ID == -1
-		fprintf(file, "\nERROR: Student ID number %i was not found in the list\n",StudentID);
+	NodePtr = GetNodeForLast(listHead, studentLast);
+	if(NodePtr == NULL){ //Student.student_name doesnt exist
+		fprintf(file, "\nERROR: Student last name %s was not found in the list\n",studentLast);
 		return;
 	}
 	else {

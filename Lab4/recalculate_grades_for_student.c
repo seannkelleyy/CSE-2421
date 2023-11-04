@@ -4,30 +4,29 @@ THIS FILE MYSELF WITH NO ASSISTANCE FROM ANY PERSON (OTHER THAN THE
 INSTRUCTOR OR GRADERS OF THIS COURSE) AND I HAVE STRICTLY ADHERED TO THE
 TENURES OF THE OHIO STATE UNIVERSITY’S ACADEMIC INTEGRITY POLICY.
 */
-/* This is the program for option 1
-* print student scores for a specific student ID#
-*/
+
 #include <stdio.h>
 
-void PrintLine(Node **listHead, char *categoryNames, FILE *file){
+void RecalculateGradesForStudent(Node **listHead, char * categoryNames, FILE* file){
 	Node *NodePtr;
-	int StudentID;
+	int studentId;
 #ifdef DEBUG
 	fprintf(file, "Student Data. Head List is %x\n", *listHead);
 #endif
-	/* get studentID to use from user */
-	fprintf(file, "Enter the Student ID #: ");
-	scanf("%i", &StudentID);
-	fprintf(file, "Hunting for %d\n", StudentID);
+	/* get studentLast to use from user */
+	fprintf(file, "Enter the Student ID # ");
+	scanf("%d", &studentId);
+	fprintf(file, "Hunting for %d\n", studentId);
 	/* look for the correct student Node */
-	NodePtr = GetNodeForId(listHead, StudentID);
-	/* we found it or not */
+	NodePtr = GetNodeForId(listHead, studentId);
+
 	if(NodePtr == NULL){ //Student.student_ID == -1
-		fprintf(file, "\nERROR: Student ID number %i was not found in the list\n",StudentID);
+		fprintf(file, "\nERROR: Student ID number %d was not found in the list\n",studentId);
 		return;
 	}
 	else {
-		PrintHeader(categoryNames, file);
-		PrintStudent(NodePtr, file);
+		// if the student exists, recalcualte grades and print
+		CalculateGrades(NodePtr->Student); 
+		PrintStudentSimple(NodePtr, categoryNames, file);
 	}
 }
